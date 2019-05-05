@@ -1,5 +1,5 @@
 FROM microsoft/dotnet:sdk
-MAINTAINER oliver@weichhold.com
+MAINTAINER daniel@blacklotus.no
 
 # install build-tools
 RUN apt-get update -y && apt-get -y install git cmake build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev
@@ -16,9 +16,11 @@ RUN apt-get autoremove -y && apt-get clean autoclean
 RUN apt-get install -y libboost-system1.62.0 libboost-date-time1.62.0 libssl1.0.2
 RUN rm -rf /var/lib/{apt,dpkg,cache,log} /tmp/* /var/tmp/*
 
+ENV CONFIG_FILE=/config.json
+
 # API
 EXPOSE 4000
 # Stratum Ports
 EXPOSE 3032-3199
 
-ENTRYPOINT dotnet Miningcore.dll -c /config.json
+ENTRYPOINT dotnet Miningcore.dll -c $CONFIG_FILE
