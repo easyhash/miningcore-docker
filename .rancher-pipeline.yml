@@ -1,0 +1,11 @@
+stages:
+- name: Build
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: easyhash/miningcore:latest,build-${CICD_EXECUTION_ID}
+      pushRemote: true
+      registry: index.docker.io
+timeout: 60
+notification: {}
