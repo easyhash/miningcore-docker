@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:2.2
 MAINTAINER daniel@blacklotus.no
 
 # install build-tools
-RUN apt-get update -y && apt-get -y install git cmake build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libminiupnpc-dev libzmq3-dev liblas-c3
+RUN apt-get update -y && apt-get -y install git cmake build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq5
 
 # build
 RUN cd /tmp && git clone https://github.com/coinfoundry/miningcore && cd miningcore/src/Miningcore && \
