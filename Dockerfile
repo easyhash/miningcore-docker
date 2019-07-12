@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:2.2
 MAINTAINER daniel@blacklotus.no
 
 # install build-tools
-RUN apt-get update -y && apt-get -y install git cmake build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev
+RUN apt-get update -y && apt-get -y install git cmake build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libminiupnpc-dev libzmq3-dev liblas-c3
 
 # build
 RUN cd /tmp && git clone https://github.com/coinfoundry/miningcore && cd miningcore/src/Miningcore && \
@@ -17,6 +17,7 @@ RUN apt-get install -y libboost-system1.62.0 libboost-date-time1.62.0 libssl1.0.
 RUN rm -rf /var/lib/{apt,dpkg,cache,log} /tmp/* /var/tmp/*
 
 ENV CONFIG_FILE=/config.json
+ENV LD_LIBRARY_PATH=/usr/local/lib
 
 # API
 EXPOSE 4000
