@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:sdk
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2
 MAINTAINER daniel@blacklotus.no
 
 # install build-tools
